@@ -10,12 +10,9 @@ import parkUQ.modelo.Usuario;
 import parkUQ.modelo.UsuarioSistema;
 import parkUQ.modelo.Vehiculo;
 
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.PlainDocument;
 
 public class Parqueadero {
 
@@ -135,4 +132,52 @@ public class Parqueadero {
             }
         }
     }
+
+    private EspacioParqueadero buscarEspacioDisponible(String tipo) {
+        for (EspacioParqueadero espacio : espacios) {
+            if (espacio.getTipoEspacio().name().equals(tipo.name()) && espacio.estaDisponible()) {
+                return espacio;
+            }
+        }
+        throw new SinEspacioDisponibleException(tipo.name());
+    }
+
+    private Vehiculo buscarVehiculoActivo(String placa) {
+        for (Vehiculo v : vehiculosActivos) {
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
+                return v;
+            }
+        }
+        throw new VehiculoNoEncontradoException(placa);
+    }
+
+    private Tarifa buscarTarifa(TipoVehiculo tipo) {
+        for (Tarifa t : tarifas) {
+            if (t.getTipoVehiculo() == tipo) {
+                return t;
+            }
+        }
+        return new Tarifa(tipo, 0.0);
+    }
+
+    private double buscarDescuentoConductor(String identificacion) {
+        for (Usuario u : usuariosAutorizados) {
+            if (u.getidentificacion().equals(identificacion)) {
+                return u.getDescuento();
+            }
+        }
+        return 0.0;
+    }
+
+    public String getNombre() { return nombre; }
+
+    public List<EspacioParqueadero> getEspacios() { return new ArrayList<>(espacios); }
+
+    public List<RegistroSalida> getHistorialDia() { return new ArrayList<>(historialDia); }
+
+    public List<Usuario> getUsuariosAutorizados() { return new ArrayList<>(usuariosAutorizados); }
+
+    public List<Tarifa> getTarifas() { return new ArrayList<>(tarifas); }
+
+    public void setNombre(String nombre) { this.nombre = nombre; }
 }
