@@ -10,6 +10,7 @@ import parkUQ.modelo.Usuario;
 import parkUQ.modelo.UsuarioSistema;
 import parkUQ.modelo.Vehiculo;
 
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class Parqueadero {
         EspacioParqueadero espacio = buscarEspacioDisponible(vehiculo.getTipoVehiculo);
 
         espacio.asignarVehiculo(vehiculo);
-        vehiculo.setHoraIngreso(LocalDataTime.now());
+        vehiculo.setHoraIngreso(LocalDateTime.now());
         vehiculo.setEspacioAsignado(espacio);
         vehiculo.setEstado(EstadoVehiculo.DENTRO);
         vehiculosActivos.add(vehiculo);
@@ -50,7 +51,7 @@ public class Parqueadero {
     public RegistroSalida registrarSalida(String placa) {
         Vehiculo vehiculo = buscarVehiculoActiva(placa);
 
-        LocalDataTime horaSalida = LocalDataTime.now();
+        LocalDateTime horaSalida = LocalDateTime.now();
         long minutos = ChronoUnit.MINUTES.between(vehiculo.getHoraIngreso(), horaSalida);
 
         Tarifa tarifa = buscarTarifa(vehiculo.getVehiculo());
