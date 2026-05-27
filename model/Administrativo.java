@@ -1,6 +1,6 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.TipoUsuario;
+import parkUQ.enums.TipoUsuario;
 
 public class Administrativo extends Usuario {
     public static final double DESCUENTO = 0.25;

@@ -1,7 +1,7 @@
 package parkUQ.servicio;
 
-import parkUQ.modelo.ResgistroSalida;
-import parkUQ.modelo.ResgistroSalida;
+import parkUQ.model.ResgistroSalida;
+import parkUQ.model.ResgistroSalida;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
