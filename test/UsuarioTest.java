@@ -2,7 +2,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import parking.enums.TipoUsuario;
-import parking.model.Carro;
+import parking.model.Estudiante;
+import parking.model.Administrativo;
 import parking.model.Docente;
 import parking.model.Visitante;
 
@@ -13,7 +14,7 @@ public class UsuarioTest {
   @Test
   @DisplayName("Validar descuento del 20% a los estudiantes")
   void testValidarDescuentoEstudiantil() {
-    Carro.Estudiante estudiante = new Carro.Estudiante("Jelen Holguín", "10234678");
+    Estudiante estudiante = new Estudiante("Jelen Holguín", "10234678");
 //    El tercer argumento que se envia a assertEquals es para dar un valor de precision
 //    al momento de comparar doubles. En este caso tres decimales
     assertEquals(0.20, estudiante.getDescuento(), 0.001);
@@ -23,7 +24,7 @@ public class UsuarioTest {
   @Test
   @DisplayName("Validar descuento del 25% a los administrativos")
   public void testValidarDescuentoAdministrativos() {
-    Docente.Administrativo administrativo = new Docente.Administrativo("Luis Fernando Polanía", "1025648256");
+    Administrativo administrativo = new Administrativo("Luis Fernando Polanía", "1025648256");
 
     assertEquals(0.25, administrativo.getDescuento(), 0.001);
     assertEquals(TipoUsuario.ADMINISTRATIVO, administrativo.getTipoUsuario());
@@ -43,14 +44,14 @@ public class UsuarioTest {
   void testValidarNoDescuentoParaVisitantes() {
     Visitante visitante = new Visitante("Rodrigo Lara", "1267428908");
 
-    assertEquals(0.30, visitante.getDescuento(), 0.001);
+    assertEquals(0, visitante.getDescuento(), 0.001);
     assertEquals(TipoUsuario.VISITANTE, visitante.getTipoUsuario());
   }
 
   @Test
   @DisplayName("Validar descuento por subclases")
   void testValidarDescuentoParaLosDiferentesUsuarios() {
-    Carro.Estudiante estudiante = new Carro.Estudiante("Sebastian Quiceno", "1094682927");
+    Estudiante estudiante = new Estudiante("Sebastian Quiceno", "1094682927");
     Docente docente = new Docente("Juan Castaño", "10234627934");
 
     assertNotEquals(estudiante.getDescuento(), docente.getDescuento());
