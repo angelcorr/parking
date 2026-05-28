@@ -3,6 +3,7 @@ package parking.servicio;
 import parking.enums.EstadoVehiculo;
 import parking.enums.EstadoEspacio;
 import parking.enums.TipoVehiculo;
+import parking.excepcion.*;
 import parking.model.EspacioParqueadero;
 import parking.model.RegistroSalida;
 import parking.model.Tarifa;
