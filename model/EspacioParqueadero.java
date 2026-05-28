@@ -41,4 +41,12 @@ public class EspacioParqueadero {
     public void setEstado(EstadoEspacio estado) {
         this.estado = estado;
     }
+
+    public EstadoEspacio getEstado() {
+        return estado;
+    }
+
+    public Vehiculo getVehiculoAsignado() {
+        return vehiculoAsignado;
+    }
 }
