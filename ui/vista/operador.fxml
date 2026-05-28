@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="trabajoFinal.ui.controlador.OperadorControlador"
+            prefWidth="800" prefHeight="600">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 10 15 10 15; -fx-background-color: #F1F8E9;">
+            <Button text="Cerrar sesión" onAction="#cerrarSesion"
+                    style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 12;"/>
+            <Label text="ParkUQ — Panel del Operador"
+                   style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- PESTAÑA: INGRESO -->
+            <Tab text="Registrar Ingreso">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <Label text="Datos del vehículo" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Placa:" prefWidth="130"/>
+                        <TextField fx:id="campoPlacaIngreso" promptText="Ej: ABC123" prefWidth="200"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Tipo de vehículo:" prefWidth="130"/>
+                        <ComboBox fx:id="combotipoVehiculo" prefWidth="200"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Nombre conductor:" prefWidth="130"/>
+                        <TextField fx:id="campoNombreConductor" promptText="Nombre completo" prefWidth="200"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Identificación:" prefWidth="130"/>
+                        <TextField fx:id="campoIdConductor" promptText="Cédula o ID" prefWidth="200"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Cilindraje (moto):" prefWidth="130"/>
+                        <TextField fx:id="campoCilindraje" promptText="Solo para motos" prefWidth="200"/>
+                    </HBox>
+
+                    <Button text="Registrar Ingreso" onAction="#registrarIngreso"
+                            style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-size: 13;" prefWidth="200"/>
+
+                    <Label fx:id="etiquetaResultadoIngreso" style="-fx-text-fill: #1565C0; -fx-font-size: 13;" text=""/>
+                </VBox>
+            </Tab>
+
+            <!-- PESTAÑA: SALIDA -->
+            <Tab text="Registrar Salida">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <Label text="Salida de vehículo" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Placa:" prefWidth="130"/>
+                        <TextField fx:id="campoPlacaSalida" promptText="Placa del vehículo" prefWidth="200"/>
+                        <Button text="Calcular y Registrar" onAction="#registrarSalida"
+                                style="-fx-background-color: #C62828; -fx-text-fill: white;"/>
+                    </HBox>
+
+                    <Label text="Recibo:" style="-fx-font-weight: bold;"/>
+                    <TextArea fx:id="areaRecibo" prefHeight="300" editable="false"
+                              style="-fx-font-family: monospace; -fx-font-size: 13;"/>
+                </VBox>
+            </Tab>
+
+            <!-- PESTAÑA: CONSULTAS -->
+            <Tab text="Consultas">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Vehículos en el parqueadero" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                        <Button text="Actualizar" onAction="#actualizarConsultas"/>
+                    </HBox>
+
+                    <TableView fx:id="tablaVehiculos" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="colPlaca" text="Placa" prefWidth="100"/>
+                            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                            <TableColumn fx:id="colConductor" text="Conductor" prefWidth="180"/>
+                            <TableColumn fx:id="colEspacio" text="Espacio" prefWidth="80"/>
+                            <TableColumn fx:id="colHoraIngreso" text="Hora Ingreso" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+
+                    <Label fx:id="etiquetaEspaciosDisponibles"
+                           style="-fx-font-size: 13; -fx-font-weight: bold;" text=""/>
+                </VBox>
+            </Tab>
+
+            <!-- PESTAÑA: REPORTES -->
+            <Tab text="Reportes del Día">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <HBox spacing="10">
+                        <Button text="Generar Reporte del Día" onAction="#generarReporte"
+                                style="-fx-background-color: #1565C0; -fx-text-fill: white; -fx-font-size: 13;"/>
+                    </HBox>
+                    <TextArea fx:id="areaReporte" prefHeight="400" editable="false"
+                              style="-fx-font-family: monospace; -fx-font-size: 13;"/>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>
