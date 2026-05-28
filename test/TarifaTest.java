@@ -41,7 +41,7 @@ public class TarifaTest {
   public void testMantenerElValorPorHora() {
     Tarifa tarifa = new Tarifa(TipoVehiculo.CARRO, 5000.0);
 
-    assertEquals(6000.0, tarifa.getValorPorHora(), 0.01);
+    assertEquals(5000.0, tarifa.getValorPorHora(), 0.01);
   }
 
   @Test

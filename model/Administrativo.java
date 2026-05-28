@@ -5,7 +5,7 @@ import parking.enums.TipoUsuario;
 public class Administrativo extends Usuario {
     public static final double DESCUENTO = 0.25;
 
-    public Administrativo(String nombre, String identificacion, TipoUsuario tipoUsuario) {
+    public Administrativo(String nombre, String identificacion) {
         super(nombre, identificacion, TipoUsuario.ADMINISTRATIVO);
     }
 
