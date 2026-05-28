@@ -1,4 +1,4 @@
-package parkUQ.enums;
+package parking.enums;
 
 public enum RolSistema {
     OPERADOR,

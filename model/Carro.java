@@ -1,4 +1,4 @@
-package parkUQ.model;
+package parking.model;
 
 import parkUQ.enums.TipoVehiculo;
 
