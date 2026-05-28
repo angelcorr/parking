@@ -1,7 +1,7 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.EstadoEspacio;
-import trabajoFinal.enums.TipoEspacio;
+import parkUQ.enums.EstadoEspacio;
+import parkUQ.enums.TipoEspacio;
 
 public class EspacioParqueadero {
     private String codigo;

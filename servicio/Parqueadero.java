@@ -3,12 +3,12 @@ package parkUQ.servicio;
 import parkUQ.enums.EstadoVehiculo;
 import parkUQ.enums.EstadoEspacio;
 import parkUQ.enums.TipoVehiculo;
-import parkUQ.modelo.EspacioParqueadero;
-import parkUQ.modelo.RegistroSalida;
-import parkUQ.modelo.Tarifa;
-import parkUQ.modelo.Usuario;
-import parkUQ.modelo.UsuarioSistema;
-import parkUQ.modelo.Vehiculo;
+import parkUQ.model.EspacioParqueadero;
+import parkUQ.model.RegistroSalida;
+import parkUQ.model.Tarifa;
+import parkUQ.model.Usuario;
+import parkUQ.model.UsuarioSistema;
+import parkUQ.model.Vehiculo;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

@@ -1,9 +1,9 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.TipoUsuario;
-import trabajoFinal.enums.TipoVehiculo;
+import parkUQ.enums.TipoUsuario;
+import parkUQ.enums.TipoVehiculo;
 
-public class Usuario {
+public abstract class Usuario {
     private String nombre;
     private String identificacion;
     private TipoUsuario tipoUsuario;
@@ -41,5 +41,4 @@ public class Usuario {
         return tipoUsuario + " | " + nombre + " | ID: " + identificacion
                 + " | Descuento: " + (int)(getDescuento() * 100) + "%";
     }
-}
 }

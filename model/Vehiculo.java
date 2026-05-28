@@ -1,11 +1,11 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.EstadoVehiculo;
-import trabajoFinal.enums.TipoVehiculo;
+import parkUQ.enums.EstadoVehiculo;
+import parkUQ.enums.TipoVehiculo;
 
 import java.time.LocalDateTime;
 
-public class Vehiculo {
+public abstract class Vehiculo {
     private String placa;
     private TipoVehiculo tipoVehiculo;
     private String nombreConductor;

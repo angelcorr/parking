@@ -1,6 +1,6 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.TipoVehiculo;
+import parkUQ.enums.TipoVehiculo;
 
 public class Bicicleta extends Vehiculo {
 

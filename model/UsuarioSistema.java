@@ -1,6 +1,6 @@
-package trabajoFinal.model;
+package parkUQ.model;
 
-import trabajoFinal.enums.RolSistema;
+import parkUQ.enums.RolSistema;
 
 public class UsuarioSistema {
     private String nombreUsuario;
