@@ -1,7 +1,7 @@
 package parking.model;
 
-import parkUQ.enums.EstadoVehiculo;
-import parkUQ.enums.TipoVehiculo;
+import parking.enums.EstadoVehiculo;
+import parking.enums.TipoVehiculo;
 
 import java.time.LocalDateTime;
 

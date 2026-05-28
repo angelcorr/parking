@@ -1,6 +1,6 @@
 package parking.model;
 
-import parkUQ.enums.RolSistema;
+import parking.enums.RolSistema;
 
 public class UsuarioSistema {
     private String nombreUsuario;

@@ -1,7 +1,7 @@
 package parking.model;
 
-import parkUQ.enums.EstadoEspacio;
-import parkUQ.enums.TipoEspacio;
+import parking.enums.EstadoEspacio;
+import parking.enums.TipoEspacio;
 
 public class EspacioParqueadero {
     private String codigo;

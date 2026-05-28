@@ -1,8 +1,8 @@
-package parkUQ.servicio;
+package parking.servicio;
 
-import parkUQ.model.ResgistroSalida;
-import parkUQ.model.ResgistroSalida;
 
+import parking.model.RegistroSalida;
+import parking.model.Vehiculo;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
