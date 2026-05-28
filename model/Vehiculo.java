@@ -76,6 +76,10 @@ public abstract class Vehiculo {
         this.estado = estado;
     }
 
+    public EstadoVehiculo getEstado() {
+        return estado;
+    }
+
     @Override
     public String toString() {
         return getTipoDescripcion() + " | Placa: " + placa + " | Conductor: " + nombreConductor;

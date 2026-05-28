@@ -26,3 +26,5 @@ replay_pid*
 # Archivos IntelLiJ
 *.iml
 .idea/
+
+/out

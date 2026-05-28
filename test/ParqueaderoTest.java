@@ -80,7 +80,7 @@ public class ParqueaderoTest {
     @Test
     @DisplayName("Ingresar motocicleta no debe ocupar espacio de carro")
     public void testIngresarMoto() {
-        Motocicleta moto = new Motocicleta("ABC123", "Juan Perez", "112233");
+        Motocicleta moto = new Motocicleta("ABC123", "Juan Perez", "112233", 750);
         EspacioParqueadero espacio = parqueadero.registrarIngreso(moto, "112233");
 
         assertEquals(TipoEspacio.MOTO, espacio.getTipoEspacio());
