@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="trabajoFinal.ui.controlador.AdminControlador"
+            prefWidth="850" prefHeight="620">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 10 15 10 15; -fx-background-color: #E3F2FD;">
+            <Button text="Cerrar sesión" onAction="#cerrarSesion"
+                    style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 12;"/>
+            <Label text="ParkUQ — Panel del Administrador"
+                   style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #1565C0;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- PESTAÑA: ESPACIOS -->
+            <Tab text="Gestión de Espacios">
+                <VBox spacing="12" style="-fx-padding: 20;">
+                    <Label text="Agregar nuevo espacio" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Código:" prefWidth="120"/>
+                        <TextField fx:id="campoCodigoEspacio" promptText="Ej: C-11" prefWidth="150"/>
+                        <Label text="Tipo:"/>
+                        <ComboBox fx:id="comboTipoEspacio" prefWidth="140"/>
+                        <Button text="Agregar" onAction="#agregarEspacio"
+                                style="-fx-background-color: #2E7D32; -fx-text-fill: white;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <Label text="Cambiar estado de espacio" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Código:" prefWidth="120"/>
+                        <TextField fx:id="campoCodigoModificar" promptText="Ej: C-01" prefWidth="150"/>
+                        <Label text="Nuevo estado:"/>
+                        <ComboBox fx:id="comboNuevoEstado" prefWidth="180"/>
+                        <Button text="Actualizar" onAction="#modificarEstadoEspacio"
+                                style="-fx-background-color: #E65100; -fx-text-fill: white;"/>
+                    </HBox>
+
+                    <Label fx:id="etiquetaEspacios" style="-fx-text-fill: #1565C0; -fx-font-size: 12;" text=""/>
+
+                    <TableView fx:id="tablaEspacios" prefHeight="280">
+                        <columns>
+                            <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+                            <TableColumn fx:id="colTipoEspacio" text="Tipo" prefWidth="130"/>
+                            <TableColumn fx:id="colEstado" text="Estado" prefWidth="180"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- PESTAÑA: TARIFAS -->
+            <Tab text="Gestión de Tarifas">
+                <VBox spacing="12" style="-fx-padding: 20;">
+                    <Label text="Modificar tarifa por tipo de vehículo (valor por hora)"
+                           style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Tipo de vehículo:" prefWidth="140"/>
+                        <ComboBox fx:id="comboTipoVehiculo" prefWidth="150"/>
+                        <Label text="Nuevo valor ($):"/>
+                        <TextField fx:id="campoNuevoValor" promptText="Ej: 3500" prefWidth="120"/>
+                        <Button text="Actualizar tarifa" onAction="#modificarTarifa"
+                                style="-fx-background-color: #1565C0; -fx-text-fill: white;"/>
+                    </HBox>
+
+                    <Label fx:id="etiquetaTarifas" style="-fx-text-fill: #1565C0; -fx-font-size: 12;" text=""/>
+
+                    <TableView fx:id="tablaTarifas" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="colTarifaTipo" text="Tipo de Vehículo" prefWidth="200"/>
+                            <TableColumn fx:id="colValorHora" text="Valor por Hora ($)" prefWidth="200"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- PESTAÑA: USUARIOS AUTORIZADOS -->
+            <Tab text="Usuarios Autorizados">
+                <VBox spacing="12" style="-fx-padding: 20;">
+                    <Label text="Registrar usuario con descuento"
+                           style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Nombre:" prefWidth="120"/>
+                        <TextField fx:id="campoNombreUsuario" promptText="Nombre completo" prefWidth="180"/>
+                        <Label text="Identificación:"/>
+                        <TextField fx:id="campoIdUsuario" promptText="Cédula" prefWidth="130"/>
+                        <Label text="Tipo:"/>
+                        <ComboBox fx:id="comboTipoUsuario" prefWidth="140"/>
+                        <Button text="Registrar" onAction="#agregarUsuarioAutorizado"
+                                style="-fx-background-color: #2E7D32; -fx-text-fill: white;"/>
+                    </HBox>
+
+                    <Label fx:id="etiquetaUsuarios" style="-fx-text-fill: #1565C0; -fx-font-size: 12;" text=""/>
+
+                    <TableView fx:id="tablaUsuarios" prefHeight="250">
+                        <columns>
+                            <TableColumn fx:id="colNombreUsuario" text="Nombre" prefWidth="200"/>
+                            <TableColumn fx:id="colIdUsuario" text="Identificación" prefWidth="150"/>
+                            <TableColumn fx:id="colTipoUsuario" text="Tipo" prefWidth="130"/>
+                            <TableColumn fx:id="colDescuento" text="Descuento" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+
+                    <HBox spacing="10">
+                        <Label text="Haz clic en una fila para cargar los datos en el formulario."
+                               style="-fx-font-size: 11; -fx-text-fill: #777;" HBox.hgrow="ALWAYS"/>
+                        <Button text="Eliminar seleccionado" onAction="#eliminarUsuario"
+                                style="-fx-background-color: #C62828; -fx-text-fill: white;"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>
