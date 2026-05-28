@@ -23,7 +23,7 @@ public class AppParkUQ  extends Application {
     public void start(Stage stage) throws IOException {
         parqueadero = inicializarParqueadero();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("vista/login.fxml"));
         Scene escena = new Scene(loader.load(), 400, 300);
 
         LoginControlador controlador = loader.getController();

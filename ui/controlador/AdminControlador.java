@@ -86,6 +86,7 @@ public class AdminControlador {
     colNombreUsuario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
     colIdUsuario.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
     colTipoUsuario.setCellValueFactory(new PropertyValueFactory<>("tipoUsuario"));
+    colDescuento.setCellValueFactory(new PropertyValueFactory<>("descuento"));
 
     tablaUsuarios.getSelectionModel().selectedItemProperty().addListener(
         (observable, anterior, seleccionado) -> {
@@ -215,9 +216,9 @@ public class AdminControlador {
   }
 
   private void actualizarTablas() {
-    tablaEspacios.setItems(FXCollections.observableArrayList(parqueadero.getEspacios()));
-    tablaTarifas.setItems(FXCollections.observableArrayList(parqueadero.getTarifas()));
-    tablaUsuarios.setItems(FXCollections.observableArrayList(parqueadero.getUsuariosAutorizados()));
+    tablaEspacios.getItems().setAll((parqueadero.getEspacios()));
+    tablaTarifas.getItems().setAll((parqueadero.getTarifas()));
+    tablaUsuarios.getItems().setAll((parqueadero.getUsuariosAutorizados()));
   }
 
   public void setParqueadero(Parqueadero parqueadero) {

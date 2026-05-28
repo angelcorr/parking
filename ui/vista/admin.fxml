@@ -6,7 +6,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="trabajoFinal.ui.controlador.AdminControlador"
+            fx:controller="parking.ui.controlador.AdminControlador"
             prefWidth="850" prefHeight="620">
 
     <top>
