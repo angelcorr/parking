@@ -27,36 +27,51 @@ public abstract class Vehiculo {
     public String getPlaca() {
         return placa;
     }
+
     public void setPlaca(String placa) {
         this.placa = placa;
     }
+
     public TipoVehiculo getTipoVehiculo() {
         return tipoVehiculo;
     }
+
     public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
     }
+
     public String getNombreConductor() {
         return nombreConductor;
     }
+
     public void setNombreConductor(String nombreConductor) {
         this.nombreConductor = nombreConductor;
     }
+
     public String getIdentificacionConductor() {
         return identificacionConductor;
     }
+
     public void setIdentificacionConductor(String identificacionConductor) {
         this.identificacionConductor = identificacionConductor;
     }
+
     public LocalDateTime getHoraIngreso() {
         return horaIngreso;
     }
+
     public void setHoraIngreso(LocalDateTime horaIngreso) {
         this.horaIngreso = horaIngreso;
     }
+
     public EspacioParqueadero getEspacioAsignado() {
         return espacioAsignado;
     }
+
+    public void setEspacioAsignado(EspacioParqueadero espacioAsignado) {
+        this.espacioAsignado = espacioAsignado;
+    }
+
     public void setEstado(EstadoVehiculo estado) {
         this.estado = estado;
     }

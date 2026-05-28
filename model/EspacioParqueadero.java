@@ -25,4 +25,20 @@ public class EspacioParqueadero {
         this.vehiculoAsignado = null;
         this.estado = EstadoEspacio.DISPONIBLE;
     }
+
+    public boolean estaDisponible() {
+        return estado == EstadoEspacio.DISPONIBLE;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public TipoEspacio getTipoEspacio() {
+        return tipoEspacio;
+    }
+
+    public void setEstado(EstadoEspacio estado) {
+        this.estado = estado;
+    }
 }
