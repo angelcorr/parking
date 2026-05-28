@@ -1,7 +1,6 @@
 package parking.model;
 
-import parkUQ.enums.TipoUsuario;
-import parkUQ.enums.TipoVehiculo;
+import parking.enums.TipoUsuario;
 
 public abstract class Usuario {
     private String nombre;

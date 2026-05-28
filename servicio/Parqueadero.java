@@ -1,14 +1,14 @@
-package parkUQ.servicio;
+package parking.servicio;
 
-import parkUQ.enums.EstadoVehiculo;
-import parkUQ.enums.EstadoEspacio;
-import parkUQ.enums.TipoVehiculo;
-import parkUQ.model.EspacioParqueadero;
-import parkUQ.model.RegistroSalida;
-import parkUQ.model.Tarifa;
-import parkUQ.model.Usuario;
-import parkUQ.model.UsuarioSistema;
-import parkUQ.model.Vehiculo;
+import parking.enums.EstadoVehiculo;
+import parking.enums.EstadoEspacio;
+import parking.enums.TipoVehiculo;
+import parking.model.EspacioParqueadero;
+import parking.model.RegistroSalida;
+import parking.model.Tarifa;
+import parking.model.Usuario;
+import parking.model.UsuarioSistema;
+import parking.model.Vehiculo;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -23,7 +23,7 @@ public class Parqueadero {
     private List<RegistroSalida> historialDia;
     private List<Usuario> usuariosAutorizados;
     private List<Tarifa> tarifas;
-    private List<UsuarioSistema> usuarioSistema;
+    private List<UsuarioSistema> usuariosSistema;
 
     public Parqueadero(String nombre) {
         this.nombre = nombre;
@@ -32,12 +32,12 @@ public class Parqueadero {
         this.historialDia = new ArrayList<>();
         this.usuariosAutorizados = new ArrayList<>();
         this.tarifas = new ArrayList<>();
-        this.usuarioSistema = new ArrayList<>();
+        this.usuariosSistema = new ArrayList<>();
     }
 
     public EspacioParqueadero registrarIngreso(Vehiculo vehiculo, String idConductor) {
         verificarPlacaNoDuplicada(vehiculo.getPlaca());
-        EspacioParqueadero espacio = buscarEspacioDisponible(vehiculo.getTipoVehiculo);
+        EspacioParqueadero espacio = buscarEspacioDisponible(vehiculo.getTipoVehiculo());
 
         espacio.asignarVehiculo(vehiculo);
         vehiculo.setHoraIngreso(LocalDateTime.now());
@@ -49,13 +49,16 @@ public class Parqueadero {
     }
 
     public RegistroSalida registrarSalida(String placa) {
-        Vehiculo vehiculo = buscarVehiculoActiva(placa);
+        Vehiculo vehiculo = buscarVehiculoActivo(placa);
 
         LocalDateTime horaSalida = LocalDateTime.now();
         long minutos = ChronoUnit.MINUTES.between(vehiculo.getHoraIngreso(), horaSalida);
 
-        Tarifa tarifa = buscarTarifa(vehiculo.getVehiculo());
+        Tarifa tarifa = buscarTarifa(vehiculo.getTipoVehiculo());
         double tarifaBase = tarifa.calcularCosto(minutos);
+
+        double descuento = buscarDescuentoConductor(vehiculo.getIdentificacionConductor());
+        double totalCobrado = tarifaBase * (1 - descuento);
 
         RegistroSalida registro = new RegistroSalida(
             vehiculo,
@@ -92,7 +95,7 @@ public class Parqueadero {
     public void modificarEstadoEspacio(String codigo, EstadoEspacio nuevoEstado) {
         for (EspacioParqueadero espacio : espacios) {
             if (espacio.getCodigo().equalsIgnoreCase(codigo)) {
-                espacio.setEspacio(nuevoEstado);
+                espacio.setEstado(nuevoEstado);
                 return;
             }
         }
@@ -112,7 +115,7 @@ public class Parqueadero {
     public void agregarUsuarioAutorizado(Usuario usuario) { usuariosAutorizados.add(usuario); }
 
     public boolean eliminarUsuarioAutorizado(String identificacion) {
-        return usuariosAutorizados.removeIf(u -> u.getIdeficiacion().equals(identificacion));
+        return usuariosAutorizados.removeIf(u -> u.getIdentificacion().equals(identificacion));
     }
 
     public UsuarioSistema autentificarUsuarioSistema(String user, String pass) {
@@ -134,7 +137,7 @@ public class Parqueadero {
         }
     }
 
-    private EspacioParqueadero buscarEspacioDisponible(String tipo) {
+    private EspacioParqueadero buscarEspacioDisponible(TipoVehiculo tipo) {
         for (EspacioParqueadero espacio : espacios) {
             if (espacio.getTipoEspacio().name().equals(tipo.name()) && espacio.estaDisponible()) {
                 return espacio;
@@ -163,7 +166,7 @@ public class Parqueadero {
 
     private double buscarDescuentoConductor(String identificacion) {
         for (Usuario u : usuariosAutorizados) {
-            if (u.getidentificacion().equals(identificacion)) {
+            if (u.getIdentificacion().equals(identificacion)) {
                 return u.getDescuento();
             }
         }

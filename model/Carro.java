@@ -1,6 +1,6 @@
 package parking.model;
 
-import parkUQ.enums.TipoVehiculo;
+import parking.enums.TipoVehiculo;
 
 public class Carro extends Vehiculo {
 

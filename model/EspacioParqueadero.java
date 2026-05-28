@@ -1,7 +1,7 @@
 package parking.model;
 
-import parkUQ.enums.EstadoEspacio;
-import parkUQ.enums.TipoEspacio;
+import parking.enums.EstadoEspacio;
+import parking.enums.TipoEspacio;
 
 public class EspacioParqueadero {
     private String codigo;
@@ -24,5 +24,21 @@ public class EspacioParqueadero {
     public void liberarEspacio () {
         this.vehiculoAsignado = null;
         this.estado = EstadoEspacio.DISPONIBLE;
+    }
+
+    public boolean estaDisponible() {
+        return estado == EstadoEspacio.DISPONIBLE;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public TipoEspacio getTipoEspacio() {
+        return tipoEspacio;
+    }
+
+    public void setEstado(EstadoEspacio estado) {
+        this.estado = estado;
     }
 }

@@ -1,6 +1,6 @@
 package parking.model;
 
-import parkUQ.enums.RolSistema;
+import parking.enums.RolSistema;
 
 public class UsuarioSistema {
     private String nombreUsuario;
@@ -12,21 +12,31 @@ public class UsuarioSistema {
         this.contrasena = contrasena;
         this.rol = rol;
     }
+
+    public boolean autenticar(String usuario, String pass) {
+        return this.nombreUsuario.equals(usuario) && this.contrasena.equals(pass);
+    }
+
     public String getNombreUsuario() {
         return nombreUsuario;
     }
+
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
+
     public String getContrasena() {
         return contrasena;
     }
+
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
     public RolSistema getRol() {
         return rol;
     }
+
     public void setRol(RolSistema rol) {
         this.rol = rol;
     }

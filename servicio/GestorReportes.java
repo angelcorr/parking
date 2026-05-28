@@ -1,7 +1,8 @@
-package parkUQ.servicio;
+package parking.servicio;
 
-import parkUQ.model.ResgistroSalida;
-import parkUQ.model.ResgistroSalida;
+
+import parking.model.RegistroSalida;
+import parking.model.Vehiculo;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -25,7 +26,7 @@ public class GestorReportes {
     }
 
     public double calcularTiempoPromedio() {
-        List<ResgistroSalida> historial = parqueadero.getHistorialDia();
+        List<RegistroSalida> historial = parqueadero.getHistorialDia();
         if (historial.isEmpty()) {
             return 0;
         }
@@ -58,7 +59,7 @@ public class GestorReportes {
         for (RegistroSalida r : historial) {
             switch (r.getVehiculo().getTipoVehiculo()) {
                 case CARRO -> carros++;
-                case MOTOCICLETA -> motos++;
+                case MOTO -> motos++;
                 case BICICLETA -> bicicletas++;
             }
         }

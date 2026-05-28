@@ -1,6 +1,6 @@
 package parking.model;
 
-import parkUQ.enums.TipoUsuario;
+import parking.enums.TipoUsuario;
 
 public class Visitante extends Administrativo {
     public static final double DESCUENTO = 0.0;
