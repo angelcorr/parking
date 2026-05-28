@@ -53,7 +53,7 @@ public class AppParkUQ  extends Application {
 
         p.agregarTarifa(new Tarifa(TipoVehiculo.CARRO, 3000));
         p.agregarTarifa(new Tarifa(TipoVehiculo.MOTO, 2000));
-        p.agregarTarifa(new Tarifa(TipoVehiculo.BICICLETA, 5000));
+        p.agregarTarifa(new Tarifa(TipoVehiculo.BICICLETA, 500));
 
         p.agregarUsuarioSistema(new UsuarioSistema("operador", "1234", RolSistema.OPERADOR));
         p.agregarUsuarioSistema(new UsuarioSistema("admin", "admin", RolSistema.ADMINISTRADOR));
